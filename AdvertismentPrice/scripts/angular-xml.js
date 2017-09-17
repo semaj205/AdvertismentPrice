@@ -1,10 +1,10 @@
-﻿(function (ng) {
+﻿(function(ng) {
 
     function MicrosoftXMLDOMParser($window) {
-        this.parser = new $window.ActiveXObject('Microsoft.XMLDOM');
+        this.parser = new $window.ActiveXObject("Microsoft.XMLDOM");
     }
 
-    MicrosoftXMLDOMParser.prototype.parse = function (input) {
+    MicrosoftXMLDOMParser.prototype.parse = function(input) {
         var parser = this.parser,
             parseError;
         parser.async = false;
@@ -13,7 +13,7 @@
         if (parseError.errorCode === 0) {
             return parser;
         } else {
-            throw new Error('Cannot parse XML: ' + parseError.reason);
+            throw new Error("Cannot parse XML: " + parseError.reason);
         }
     };
 
@@ -21,8 +21,8 @@
         this.parser = new $window.DOMParser();
     }
 
-    XMLDOMParser.prototype.parse = function (input) {
-        return this.parser.parseFromString(input, 'text/xml');
+    XMLDOMParser.prototype.parse = function(input) {
+        return this.parser.parseFromString(input, "text/xml");
     };
 
     function parserFactory($window) {
@@ -31,7 +31,7 @@
         } else if ($window.ActiveXObject) {
             return new MicrosoftXMLDOMParser($window);
         } else {
-            throw new Error('Cannot parser XML in this environment.');
+            throw new Error("Cannot parser XML in this environment.");
         }
     }
 
@@ -44,17 +44,18 @@
                 return $q.when(response);
             }
         }
+
         return {
             response: responseHandler
         };
     }
 
     function configProvider($provide) {
-        $provide.factory('xmlHttpInterceptor', ['$q', 'xmlFilter', xmlHttpInterceptorFactory]);
+        $provide.factory("xmlHttpInterceptor", ["$q", "xmlFilter", xmlHttpInterceptorFactory]);
     }
 
     function filterFactory(xmlParser) {
-        return function (input) {
+        return function(input) {
             var xmlDoc = xmlParser.parse(input);
             return ng.element(xmlDoc);
         };
@@ -62,10 +63,10 @@
 
     if (ng) {
         ng
-          .module('xml', [])
-          .config(['$provide', configProvider])
-          .factory('xmlParser', ['$window', parserFactory])
-          .filter('xml', ['xmlParser', filterFactory]);
+            .module("xml", [])
+            .config(["$provide", configProvider])
+            .factory("xmlParser", ["$window", parserFactory])
+            .filter("xml", ["xmlParser", filterFactory]);
     }
 
 }(angular));

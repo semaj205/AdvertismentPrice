@@ -31,7 +31,7 @@ station.config(function($httpProvider) {
     })
     .controller("StationCtrl",
         function($scope, $http) {
-            $http.get("PriceData.xml").then(function(response) {
+            $http.get("PriceData.xml").then(function (response) {
                 var stations = [],
                     els = response.xml.find("Station"),
                     station,

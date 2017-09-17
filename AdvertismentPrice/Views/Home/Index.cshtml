@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<!doctype html>
+<html lang="en" ng-app="AdvertismentPrice">
+<head>
+    <title>Advertisment Price</title>
+</head>
+<body>
+    <div ng-controller="TypeCtrl">
+        <select ng-model="selectedType" ng-options="b.name for b in types">
+            <option value="">-- Select a Type --</option>
+        </select>
+        <p>
+            Advertisment Type: <em>{{ selectedType }}</em>
+        </p>
+    </div>
+
+    <div ng-controller="StationCtrl">
+        <select ng-model="selectedStation" ng-options="s.name for s in stations">
+            <option value="">-- Select a Station --</option>
+        </select>
+        <p>
+            Station: <em>{{ selectedStation }}</em>
+        </p>
+    </div>
+
+    <div>
+        Advertisment Length: <input type="number" ng-model="length" />
+        <br />
+        Price: {{length*62.27}}
+    </div>
+
+
+    <script src="../../scripts/angular.js"></script>
+    <script src="../../scripts/angular-xml.js"></script>
+    <script src="../../Controllers/PriceController.js"></script>
+
+</body>
+</html>
+
