@@ -1,0 +1,21 @@
+﻿<?xml version="1.0"?>
+
+<data>
+  <AdvertismentLength>
+    <Length id="1" LowerLength="5" UpperLength="30" ChargePerSecond="1.25" />
+    <Length id="2" LowerLength="31" UpperLength="60" ChargePerSecond="1.15" />
+    <Length id="3" LowerLength="61" UpperLength="180" ChargePerSecond="0.95" />
+  </AdvertismentLength>
+
+  <Types>
+    <Type id="1" Name="Video" LevyChargePerAdvertisment="2.25" />
+    <Type id="2" Name="Radio" LevyChargePerAdvertisment="1.5" />
+  </Types>
+
+  <Stations>
+    <Station id="1" Name="Star Wars FM" StandardOne-OffCharge="2.5" />
+    <Station id="2" Name="Plainsmen FM" StandardOne-OffCharge="2.5" />
+    <Station id="3" Name="Other" StandardOne-OffCharge="0" />
+  </Stations>
+
+</data>
